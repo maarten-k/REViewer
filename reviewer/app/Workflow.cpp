@@ -195,9 +195,10 @@ int runWorkflow(const WorkflowArguments& args)
     {
         auto locusSpec = locusCatalog.at(locusId);
         auto locusResults = analyzeLocus(args.referencePath, args.readsPath, args.vcfPath, locusId, locusSpec);
-
-        const auto svgPath = args.outputPrefix + "." + locusId + ".svg";
-        generateSvg(locusResults.lanePlots(), svgPath);
+        if (args.noSVG==false){
+            const auto svgPath = args.outputPrefix + "." + locusId + ".svg";
+            generateSvg(locusResults.lanePlots(), svgPath);
+        }
 
         for (const auto& metrics : locusResults.metricsByVariant())
         {

@@ -34,6 +34,7 @@ struct WorkflowArguments
     std::string locusId;
     std::string outputPrefix;
     int locusExtensionLength;
+    bool noSVG;
 };
 
 int runWorkflow(const WorkflowArguments& args);
